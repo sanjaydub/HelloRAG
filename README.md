@@ -84,4 +84,4 @@ Below is a suggested diagram for the workflow. Save this as `docs/rag_wiki_workf
 For a more visually appealing diagram, you can use tools like draw.io, Lucidchart, or Excalidraw to create a flowchart based on the above ASCII diagram.
 
 ## License
-MIT
+This project is for educational and research purposes.
