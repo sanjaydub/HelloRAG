@@ -58,10 +58,19 @@ This approach ensures that answers are grounded in real Wikipedia content, makin
 
 ## Example Usage
 
-```
+## Working Example
+
+Below is a real example of the RAG pipeline in action, as shown in the screenshot:
+
+![RAG Demo](./docs/RAGDemo.png)
+
+Example 2:
+``` 
 Topic: Web scraping
 Query: What is web scraping?
-Answer: [Model's response]
+
+Answer:
+Web scraping is a technique used to extract data from websites. It typically involves fetching web pages and parsing their content to retrieve specific information. Web scraping can be performed using various programming languages and tools, and is commonly used for data collection, analysis, and automation tasks.
 ```
 
 ## Explanatory Diagram
