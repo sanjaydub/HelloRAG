@@ -13,9 +13,14 @@ load_dotenv()  # Load environment variables from .env file
 def format_docs(retrieved_docs):
   context_text = "\n\n".join(doc.page_content for doc in retrieved_docs)
   return context_text
+context_topic="Infosys";
 
-docs=AskWikiUsingRAG.get_wiki_content("Infosys")
+print(f"===== Step 1: Fetching wiki content for topic: {context_topic} =====")
+docs=AskWikiUsingRAG.get_wiki_content(context_topic)
+print(f"===== Step 2: Fetched {len(docs)} documents from Wikipedia =====")
+print("===== Step 3: Creating vector store =====")
 vector_store=AskWikiUsingRAG.create_vector_store(docs)
+print("===== Step 4: Creating retriever =====")
 retriever = vector_store.as_retriever(search_type="similarity", search_kwargs={"k": 3})
 
 
@@ -27,6 +32,7 @@ retriever_chain = RunnableParallel(
 
 
 # Create a prompt template
+print("===== Step 5: Creating prompt template and augmenting with retriever =====")
 prompt = PromptTemplate(
     template="Use the following pieces of context to answer the question at the end. "
                 "If you don't know the answer, just say that you don't know, don't try to make up an answer.\n\n"
@@ -40,5 +46,7 @@ parser = StrOutputParser()
 llm = ChatOpenAI(temperature=0)
 
 chain = retriever_chain | prompt | llm | parser
-response=chain.invoke("Who is the CEO of Infosys?")
-print(response)
+print("===== Step 6: Asking question on retriever augmented langchain =====")
+query="Tell me about Infosys offices?";
+response=chain.invoke(query)
+print("***** Final Answer on user query {"+query+"} *****\n Ans: "+response)
