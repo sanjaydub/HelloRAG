@@ -53,7 +53,7 @@ This approach ensures that answers are grounded in real Wikipedia content, makin
    ```
 4. Run the main script:
    ```sh
-   python src/getWikiContent.py
+   python src/AskWikiUsingRAGnChainsMultiTurn.py
    ```
 
 ## Example Usage
